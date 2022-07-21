@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.production.min.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"
+    ></script>
+    <!-- Load Babel -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+      const root = document.getElementById("root");
+
+      // buat function jam 
+      
+      // Versi REACT
+      function ticks() {
+        const element = (
+          <div>
+            <h1>Jam Sekarang</h1>
+            {new Date().toLocaleTimeString() /**function jamnya**/ }  
+            </div>
+            );
+
+        ReactDOM.render(element, root);
+
+      }
+      
+      // Versi Vanilla Javascript
+    
+      function ticks2() {
+        const element = 
+          `<div>
+            <h1>Jam Sekarang</h1>
+            ${new Date().toLocaleTimeString() /**function jamnya**/ }  
+            </div>`
+          root.innerHTML = element
+      }
+
+
+      ticks();
+      // ticks2();
+
+      setInterval(function() {
+        ticks()  
+      },1000)
+      // setInterval(function() {
+      //   ticks2()  
+      // },1000)
+
+
+
+      /*
+      
+      Perbedaan Render 
+
+      React dengan Vanila JS
+
+      React
+      1. akan merender satu node yang berjalan 
+
+      vaniila
+      2. merender semua node
+      
+      */
+
+    </script>
+  </body>
+</html>

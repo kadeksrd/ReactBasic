@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.production.min.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"
+    ></script>
+<!-- Load Babel -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+    
+  
+
+    const root = document.getElementById('root');
+
+
+    function Halo(props) {
+      return <p>Nama Koeh : <b>{props.namakoeh}</b></p>
+    }
+
+    const element = (
+      <div>
+          <Halo namakoeh = "kadek" />
+        </div>
+
+    )
+
+    ReactDOM.render(element,root)
+
+
+
+
+    /**
+    Proses Pembuatan React Componen
+    
+    1.Dibungkus Dengan function/class
+    2.nama Component Harus Besar Depannya Ex: function Nama
+    3.cara parsenya adalah <namaComponent />
+    
+    Penggunaan Props 
+    1. Kita Buat nama Element terlebih dahulu di jsx
+    2. ex: <h1 namaElement="isinya" bisa juga parse dari variabel lain>
+    3. lalu kita buat parameter props di componentnya
+    4. lalu arahkan namaElementnya lalu buat nama seperti ini props.namaElement
+
+    kenapa pakai props 
+
+    karena element yang di buat di jsx itu di react dibuat ke dalam object menjadi property
+
+    namaElement => parse ke object props => kita ambil properti props di dalem object 
+    => contoh props.namaPropertinya 
+
+    seperti itu kurang lebih
+    
+    
+    **/
+
+
+
+      </script>
+  </body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.production.min.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"
+    ></script>
+
+    <script>
+
+      // Cara Render Vanilla Javascript
+
+      /** const root = document.querySelector('#root');
+      console.log(root);
+
+      const element = document.createElement('h1')
+
+      element.textContent = 'test ngab';
+      element.className = 'test-ngab';
+
+      root.appendChild(element);
+
+      **/
+
+
+      // Cara Render React
+
+      /**
+       
+      const root = document.querySelector('#root'); 
+      
+      
+      React.createElement('Element', {isinya kyk class h1 id dkk});
+
+      const element = React.createElement('h1',{
+        // depedensi dari element
+
+        children: 'Test', // isi contentnya
+        className: 'test-element' // classnya
+      })
+        //  Render the Object
+
+        // ReactDOM.render(object yand di manipulasi , lokasi / appendChild ke mana );
+        
+          ReactDOM.render(element, root);
+        
+        **/
+
+        // Buat Fragment di react js
+          // fungsinya untuk merender lebih dari 1 element
+          
+          // membungkus dengan div
+          
+          
+          /**
+            const root = document.querySelector('#root'); 
+            
+
+            const p1 = React.createElement('p',{
+              children: 'p1'
+            })
+            const p2 = React.createElement('p',{
+              children: 'p2'
+            })
+
+            // cara menggunakan div dengan menambah node div baru
+            const element = React.createElement('div',{
+              
+              children:  [p1,p2], 
+              className: 'test-element' 
+            })
+          
+          // membungkus dengan  react fragment 
+          // biar ditambahkan ke div rootnya
+          // tanpa menambah node baru 
+          
+            const element2 = React.createElement(React.Fragment,{
+              
+              children:  [p1,p2], 
+              className: 'test-element' 
+            })
+          
+          
+            ReactDOM.render(element2, root);
+          **/
+
+
+        // Nested Element
+          // menulis childern pada parameter ke 3 pada CreateElement\
+
+          // aturannya gini 
+
+          // React.CreateElement('bentukannya',{property}, childern value); 
+
+          // CONTOH BUAT LIST
+
+
+          const root = document.querySelector('#root'); 
+
+          const element = React.createElement(
+            'ul',
+            {className: 'ul-list'},
+            React.createElement('li',null,'apple'),
+            React.createElement('li',null,'orange'),
+            React.createElement('li',null,'grapes')
+          )
+          
+
+          ReactDOM.render(element,root);
+        
+        </script>
+  </body>
+</html>

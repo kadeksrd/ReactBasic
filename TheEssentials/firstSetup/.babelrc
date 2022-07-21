@@ -1,0 +1,3 @@
+{
+  "presets": ["@babel/preset-react"] //aturr prerset babel ke dalam preset react (index.html)
+}
