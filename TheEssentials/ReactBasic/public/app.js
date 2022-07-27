@@ -1,40 +1,65 @@
-// state and reactivity
-const root = ReactDOM.createRoot(document.querySelector("#root")); // component
+const root = ReactDOM.createRoot(document.querySelector("#root")); // menaruh data api di jsx
 
 function App() {
-  /* 
-  cara biasa
-  
-  const state[count,setCount] = React.useState(1);
-  
-  const count = state[0];
-  const setCount = state[1];
-  
-  
-  penulisan state = React.UseState(nilaiAwal,fungsiUpdate)
-  
-  nilai Awal : nilai awal state
-  fungsi Update : fungsi untuk update sih statenya 
-    */
-  // cara destructuring
-  const [count, setCount] = React.useState(1);
-  return (
+  const [news, setNews] = React.useState([]);
+  const [loading, setLoading] = React.useState(true);
+  React.useEffect(() => {
+    setTimeout(() => {
+      const getData = async () => {
+        const request = await fetch("https://api.spaceflightnewsapi.net/v3/blogs");
+        const response = await request.json();
+        setNews(response);
+        setLoading(false);
+      };
+
+      getData();
+    }, 2000);
+  }, []);
+  return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h1", null, "Data Fetch"), loading ? /*#__PURE__*/React.createElement("i", null, "loading data ...") : /*#__PURE__*/React.createElement("ul", null, news.map(item => {
+    return;
+
     /*#__PURE__*/
-    // element
-    React.createElement("div", null, /*#__PURE__*/React.createElement("button", {
-      onClick: () => {
-        if (count == 0) {
-          count = 0;
-        } else {
-          setCount(count - 1);
-        }
-      }
-    }, "-"), /*#__PURE__*/React.createElement("span", null, " ", count, " "), /*#__PURE__*/React.createElement("button", {
-      onClick: function () {
-        setCount(count + 1);
-      }
-    }, "+"))
-  );
+    React.createElement("li", {
+      key: item.id
+    }, item.title);
+  })));
 }
+/*
+ menaruh data di jsx : 
+
+ menggunakan state
+ 1. buat state  const [news, setNews ] = React.useState([])
+ 2. taroh setNews didalam async function dan masukan hasil responsennya 
+ 3. setNews(response)
+
+ taruh state di jsx menggunakan maps
+ 1.masukan state nes di jsx lalu di mapping dengan item sebagai reference
+ 2.{news.map((item) => (
+ 3. lalu masukin li sebagai list htmlnya dan mapping judulnya 
+ 4. jangan lupa masukan key dan id sebagai ref nya    
+<li key={item.id}>{item.title} </li>
+ )
+
+  tambahkan ui loading agar lebih cantik 
+
+  tujun
+  1. buat state loading const [loading, setLoading] = React.useState(true) 
+  note: true tujuannya ada saat nunggu dia ada ui loading nnati saat false keluar apinya `
+  2. taroh state di async function setLoading(false)
+  3. buat ternary di jsx 
+  {loading ? (<i>loading data ...</i>) : ( 
+        <ul>
+        {news.map((item) => {
+          return 
+          <li key={item.id}>{item.title}</li>
+        })}
+  4. tujuannya saat true dia tampilin ui loading 
+  5. saat false dia tampilin api 
+  6. done 
+ )} 
+  
+
+*/
+
 
 root.render( /*#__PURE__*/React.createElement(App, null));
